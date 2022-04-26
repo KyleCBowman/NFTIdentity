@@ -8,23 +8,28 @@ This is a draft document
 
 Before we attempt to explain how this will solve identity for the prupose of verifying NFTs, we need to first look at how it solves the identity problem for people businesses
 
-
-# Getting onboarded
-
-
-* First point
-* Second Point
-* Third point
-
-
 # Key principles
 * Public Key Encyption
 * One-Way Processes
 * Conceptually similar to SSL Certificate Authorities
+* Layering
+
+# Getting onboarded
+
+* Kiosk
+* App
+* Database of exisiting company -> Physical letter with QR Code/2FA
 
 
 
-# There are 3 scenarios in which we would need to implement this
+
+
+
+
+
+# Using this for NFT Verification
+
+## There are 3 scenarios in which we would need to implement this
 
 * Brand New Project, Yet to mint and with an Open Policy
 * A project that has already minted, but does have an Open Policy
