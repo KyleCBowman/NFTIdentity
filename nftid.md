@@ -16,15 +16,51 @@ Before we attempt to explain how this will solve identity for the prupose of ver
 
 # Getting onboarded
 
+There are several methods by which a user can create thier initial verification
+
 * Kiosk
 * App
 * Database of exisiting company -> Physical letter with QR Code/2FA
 
 
+# The Master Record
+
+For every attribute that a user proves, this is signed by a trusted authority's private key and the resulting checksum is stored in the users Master Record.
+
+The clear text mappings of these attributes are never stored anywhere.
 
 
+# Standardisation based on use cases
+
+Conceptually, having this master DID file stored on the users device allows us perform runtime based subset DID's, based on the specific use case.
+These Subset DIDs are NFTs minted to the Cardano Blockchain.
+
+These can range from the simple downloads (requiring only your age)
+
+To mortgage applications (which require your Date of Birth,
 
 
+# From an end user point of view
+
+Lets take an example, I want to purchase some alcohol online.
+I already have confirmed my name and address (needed for shipping).
+By confirmed, I mean the "Getting Onboarded" phase has been completed for these attributes
+
+But I have not yet confirmed my DOB, thus I cannot prove my age yet to buy the alchol.
+
+I can then use the App to follow a process similar to KYC, whereby I would show my passport, my face and then app would confirm that the passport is real, the DOB I have entered matches the passport and thus would sign the attribute and add it to the Master Record.
+
+I then return to the website where I want to make the purchase, enter my details as normal into the form.
+In additional to this, I also use the Master Record, to generate a subset DID for the specific use case of an online age verified purchase, which will pull all of the relevant Checksums for these attributes and mint them as an NFT.
+
+The online store can then run the one-way checksum process on each attribute, to verify that they do match.
+
+So essentially, for each value the user submits both:
+* The Cleartext value
+* The corresponding checksum result
+
+Notice here how the process is more about confirming that the information the user has inputted is actually their information.
+This is confirmed because they have submitted
 
 
 # Using this for NFT Verification
