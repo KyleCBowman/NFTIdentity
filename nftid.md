@@ -1,12 +1,29 @@
 # IAMX X NFT MAKER X SELENE SYSTEMS IDENTIFICATION Specification Draft v0.1
 
-# Overview
+# Abstract
 
-This is a draft document
+This CIP proposes a solution to the issue of verifying Cardano NFT projects.
 
-# Explanation
 
-Before we attempt to explain how this will solve identity for the prupose of verifying NFTs, we need to first look at how it solves the identity problem for people businesses
+# Motivation
+
+Bad actors are currently one of the biggest threats to the NFT space, with scams ranging from convincing victims to send ADA to a false address to stealing art for minting - this is something that we must work hard to stop. To do this, we plan to introduce a form of ‘trust score’ for every user on the platform. The initial metrics for which will be rated by two data points; their level of identification and their level of Stake.
+
+For the most common NFT aftermarket scams, there are currently two main attack vectors:
+
+**Fake** - List an NFT with an unverified POLICY ID and then use names and other metadata to make it appear like the real project with the hope that the lack of verification goes unnoticed.
+
+**Man in middle** - Get a fake project verified (similar to getting an SSL Cert for a fake website), the idea being that people will then see the verification and not check that it is actually the correct project. Think of this like getting an SSL Cert for “G00GLE”, the padlock appears, as it really is G00GLE, but G00GLE is not GOOGLE.
+
+
+The main protection against these attack vectors so far has been the verification process, the idea being that secondary markets can build up a database of POLICY ID’s (with corresponding projects) and then the default for the user is to only see verified projects. Verifying projects is on the surface, nothing more than matching up a unique POLICY ID with its respective creator, which, once complete, allows the aftermarket to show the potential buyers all of the related information and proof of that being the real project that the buyer is looking for.
+
+Although the process for doing this so far has been accurate, it has relied on a handful of dedicated, centralised adjudicators which has resulted in delays and does not fully align with the decentralisation we all want to create.
+
+
+# Specification and Rationale
+
+Before we attempt to explain how this CIP will solve identity for the purpose of verifying NFTs, we need to first look at how it solves the identity problem for people and businesses.
 
 # Key principles
 * Public Key Encyption
@@ -16,16 +33,19 @@ Before we attempt to explain how this will solve identity for the prupose of ver
 
 # Getting onboarded
 
+The onboarding process is the initial step that people/businesses must take to create the first attributes in their **Master Record**
 There are several methods by which a user can create thier initial verification
 
-* Kiosk
-* App
-* Database of exisiting company -> Physical letter with QR Code/2FA
+* Visiting an IAMX Kiosk
+* Using the IAMX App
+* Utilising the database of an exisiting company -> Physical letter with QR Code/2FA
 
 
 # The Master Record
 
-For every attribute that a user proves, this is signed by a trusted authority's private key and the resulting checksum is stored in the users Master Record.
+For every attribute that a user proves is true about themselves, this is signed by a trusted authority's private key and the resulting checksum is stored in the users Master Record.
+
+The users Master Record is stored on the users device -> heavily encrypted.
 
 The clear text mappings of these attributes are never stored anywhere.
 
@@ -43,10 +63,10 @@ To mortgage applications (which require your Date of Birth,
 # From an end user point of view
 
 Lets take an example, I want to purchase some alcohol online.
-I already have confirmed my name and address (needed for shipping).
-By confirmed, I mean the "Getting Onboarded" phase has been completed for these attributes
+I already have verified my name and address (needed for shipping).
+By verified, I mean the "Getting Onboarded" phase has been completed for these attributes.
 
-But I have not yet confirmed my DOB, thus I cannot prove my age yet to buy the alchol.
+But I have not yet verified my DOB, thus I cannot prove my age yet to buy the alchol.
 
 I can then use the App to follow a process similar to KYC, whereby I would show my passport, my face and then app would confirm that the passport is real, the DOB I have entered matches the passport and thus would sign the attribute and add it to the Master Record.
 
@@ -56,20 +76,21 @@ In additional to this, I also use the Master Record, to generate a subset DID fo
 The online store can then run the one-way checksum process on each attribute, to verify that they do match.
 
 So essentially, for each value the user submits both:
-* The Cleartext value
+* The cleartext value
 * The corresponding checksum result
 
 Notice here how the process is more about confirming that the information the user has inputted is actually their information.
-This is confirmed because they have submitted
-
+The user still needs to enter it in cleartext for the shopping website to process, but the DID generated from the Master Record is used to confirm the information is correct.
 
 # Using this for NFT Verification
 
 ## There are 3 scenarios in which we would need to implement this
 
-* Brand New Project, Yet to mint and with an Open Policy
-* A project that has already minted, but does have an Open Policy
-* A project that has already minted and the Policy has closed
+- Brand New Project, Yet to mint and with an Open Policy
+- A project that has already minted, but does have an Open Policy
+    - (Backwards compatibility)
+- A project that has already minted and the Policy has closed
+    - (Backwards compatibility)
 
 
 ## New Projects
@@ -86,6 +107,4 @@ Crucially, this NFT will be signed by a trusted party such as NFT Maker or IAMX.
 In this case (as will be for many projects by now) the Policy is already closed.
 This gives us more of a challenge as we can no longer point from inside the project, rather from the outside in.
 To solve this, our solution wiuld be for the creator to maintain another Policy, specifically for the purpose of pointing
-
-
 
