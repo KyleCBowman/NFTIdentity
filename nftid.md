@@ -55,9 +55,7 @@ The clear text mappings of these attributes are never stored anywhere.
 Conceptually, having this master DID file stored on the users device allows us perform runtime based subset DID's, based on the specific use case.
 These Subset DIDs are NFTs minted to the Cardano Blockchain.
 
-These can range from the simple downloads (requiring only your age)
-
-To mortgage applications (which require your Date of Birth,
+These can range from the simple downloads (requiring only your age),to mortgage applications or crypto exchange KYC (which require far more attributes).
 
 
 # From an end user point of view
