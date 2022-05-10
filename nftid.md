@@ -91,10 +91,68 @@ The user still needs to enter it in cleartext for the shopping website to proces
     - (Backwards compatibility)
 
 
+## We can also take this time to define keywords:
+- MASTER RECORD
+    -This is the full collection of verified identity information about an individual or entity
+- DID
+    - This signed collection of identity information about an individual or entity, it is created by signing data in the Master Record
+- ARTIST
+    - This is the project creator
+- ISSUER
+    - This is the issuer of the verification, they are the entity that compares the project information claimed to the corresponding information publisized about the project      
+- IDENTITY TX
+    - This is the Transaction Metadata Minted under the Project Policy ID that contains information about the identity of the Artist
+    - Their signed DID and Public Key are contained within
+- ISSUER TX
+    - This is the Transaction Metadata Minted under the Project Policy ID that contains information about the identity of the Issuer
+    -Their signed DID and Public Key are contained within
+- NFT-IDENTITY TX
+    - This is the Transaction Metadata Minted under the Project Policy ID that contains information about the project in clear text
+    - Such as the discord/insta/twitter/website and the PolicyID of the project
+- CREDENTIAL HASH
+    - This hash of the concatination of the Project PolicyID and the DID of the Artist
+
+
 ## New Projects
 As with all new standards, they tend to be easiest to implement on new instances.
 In this case, all new projects have the option to set this up in the optimal format, whereby the DID is included inside of each NFT.
 Crucially, this NFT will be signed by a trusted party such as NFT Maker or IAMX.
+
+Lets see this in action:
+
+The **First TX** to get minted is the IDENTITY TX, this is the Identity of the artist and contains information about them such as their Signed DID and Public Key. This is minted under the Project's Policy ID. This TX is minted under the PROJECT Policy ID.
+Because it contains signed information, the public key can be used to decrypt the data to reveal their information, knowing that they created it.
+
+This TX is sent to the wallet address of the Artist, which also contains their own DID NFT and thus can be compared and correlated with the information claimed about the ownership.
+
+
+The **Second TX** to get minted is the ISSUER TX, this is the Identity of the issuer (the org that technically is minting the NFTs) like NFT MAKER and contains information about them such as their Signed DID and Public Key.This TX is also minted under the PROJECT Policy ID.
+Because it contains signed information, the public key can be used to decrypt the data to reveal their information, knowing that they created it.
+
+This TX is sent to the wallet address of the Artist, which also contains their own DID NFT and thus can be compared and correlated with the information claimed about the ownership.
+
+We are now in a positon, where the person who claims to be the real creator of the Project, has two TX's in their wallet that were minted by the Project Policy ID.
+
+The **Third TX** to get minted is the NFT-IDENTITY TX, this is the Identity of the PROJECT and contains information about the project in CLEAR TEXT such as the discord/insta/twitter/website and the PolicyID of the project.
+
+It also contains 3 additional groups of signature information
+
+For the Issuer: The DID
+A signed PolicyID + DID
+The storage location of the ISSUER TX (This is the assetID of the ISSUER TX)
+
+For the Project Creator:The DID
+A signed DID
+The storage location of the ISSUER TX (This is the assetID of the ISSUER TX)
+
+For ????:The DID
+A signed DID
+The storage location of the ISSUER TX (This is the assetID of the ISSUER TX)
+
+
+CRUCIALLY - every single NFT minted under this Policy ID will have the assetname of this NFT-IDENTITY TX inside its metadata, allong with the Credential Hash.
+
+
 
 ## Minted, with currently Open Policy
 With the PolicyID still open, we are able to mint another NFT under that Policy and gain the inherint proof of authenticity through it.
