@@ -41,7 +41,28 @@ There are several methods by which a user can create thier initial verification
 * Utilising the database of an exisiting company -> Physical letter with QR Code/2FA
 
 
-# The Master Record
+
+# GETTING ONBOARDED
+
+Lets say we are a new project, and we want to get onboarded.
+
+Go to IAMX website,
+Claim to be a certain project/company/artist (entity type is not relevant to this)
+
+Systematically 
+Add your projects Twitter
+Add your projects Discord
+Add your projects Github
+Add your projects Google
+Add your projects Facebook/Instagram
+
+This is verified using Single Sign On using O-Auth2
+(Any site that supports using O-Auth2 is theoretically viable, but these are the most commonly used in the NFT space)
+
+At this point, these get added to my Master Record, this is stored on the blockchain because we WANT it to be public information.
+It should be easy to verify this.
+
+# The Master Record (only relevant to the IAMX KYC process)
 
 For every attribute that a user proves is true about themselves, this is signed by a trusted authority's private key and the resulting checksum is stored in the users Master Record.
 
@@ -96,10 +117,14 @@ The user still needs to enter it in cleartext for the shopping website to proces
     -This is the full collection of verified identity information about an individual or entity
 - DID
     - This signed collection of identity information about an individual or entity, it is created by signing data in the Master Record
+    - Unique ID, for finding the Master Record
+    - Like how a passport number, finds the passport
+    - Its just a number, a very large number
 - ARTIST
-    - This is the project creator
+    - This is the project creator/publisher (the business or the group of people who consider themselves to be the creator)
 - ISSUER
-    - This is the issuer of the verification, they are the entity that compares the project information claimed to the corresponding information publisized about the project      
+    - This is the issuer of the verification, they are the entity that compares the project information claimed to the corresponding information publisized about the project
+    - This is the automated process mentioned in GETTING ONBOARDED 
 - IDENTITY TX
     - This is the Transaction Metadata Minted under the Project Policy ID that contains information about the identity of the Artist
     - Their signed DID and Public Key are contained within
@@ -114,7 +139,7 @@ The user still needs to enter it in cleartext for the shopping website to proces
 
 
 ## New Projects
-As with all new standards, they tend to be easiest to implement on new instances.
+As with all new standards, they tend to be easiest to implement on new instances as you are starting fresh.
 In this case, all new projects have the option to set this up in the optimal format, whereby the DID is included inside of each NFT.
 Crucially, this NFT will be signed by a trusted party such as NFT Maker or IAMX.
 
