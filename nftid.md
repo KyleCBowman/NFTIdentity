@@ -187,5 +187,5 @@ Crucially, this NFT will be signed by a trusted party such as NFT Maker or IAMX.
 ## Minted, with a Closed Policy
 In this case (as will be for many projects by now) the Policy is already closed.
 This gives us more of a challenge as we can no longer point from inside the project, rather from the outside in.
-To solve this, our solution wiuld be for the creator to maintain another Policy, specifically for the purpose of pointing
+To solve this, our solution would be for the creator to maintain another Policy, specifically for the purpose of pointing
 
